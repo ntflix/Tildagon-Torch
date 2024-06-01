@@ -1,3 +1,4 @@
+import asyncio
 import app
 from events.input import Buttons, BUTTON_TYPES
 from system.patterndisplay.events import *
@@ -6,13 +7,14 @@ from .torch import LEDManager
 
 
 class TorchApp(app.App):
-    led_manager: LEDManager = LEDManager()
+    led_manager: LEDManager
     color: tuple[int, int, int] = (255, 255, 255)
     on: bool = True
 
     def __init__(self):
         self.button_states = Buttons(self)
         eventbus.emit(PatternDisable())
+        self.led_manager = LEDManager()
 
     def update(self, delta):
         if self.button_states.get(BUTTON_TYPES["RIGHT"]) or self.button_states.get(
@@ -27,14 +29,17 @@ class TorchApp(app.App):
 
     def draw(self, ctx):
         # ctx.save()
-        # ctx.font_size = 20
-        # ctx.text_align = ctx.CENTER
-        # ctx.text_baseline = ctx.MIDDLE
+        ctx.font_size = 48
+        ctx.text_align = ctx.CENTER
+        ctx.text_baseline = ctx.MIDDLE
+
         ctx.rgb(
             self.color[0],
             self.color[1],
             self.color[2],
         ).rectangle(-120, -120, 240, 240).fill()
+
+        ctx.rgb(0.5, 0.5, 0.5).move_to(0, 0).text("B")
 
         # ctx.restore()
 

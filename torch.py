@@ -11,6 +11,7 @@ class LEDManager:
         tildagonos.leds.write()
 
     def __init__(self):
+        self.__color = (255, 255, 255)
         self.do_color()
 
     def on(self):
