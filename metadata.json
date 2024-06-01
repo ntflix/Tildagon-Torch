@@ -1,0 +1,5 @@
+{
+  "name": "Torch",
+  "path": "apps.torch.app",
+  "callable": "TorchApp"
+}
