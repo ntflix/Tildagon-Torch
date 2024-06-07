@@ -37,4 +37,4 @@ description = "A torch! Press B to turn on and off."
 # increased, we interpret this as a new version being released.
 #
 # Version number must be an integer!
-version = "0.5"
+version = "1.1"
